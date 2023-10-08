@@ -1,5 +1,5 @@
 class Replies:
-    PGDINAMICA = ("https://www.python.org/", None)
+    PYTHON_PAGE = ("https://www.python.org/", None)
     TWILIO = ("https://www.linkedin.com/in/patriciafelisberto/", None)
     REGISTER_USER = ("7", None)
     REBOOT_QUIZZ = ('Pronto! Digite **P** para próxima pergunta do Quiz; **R** para ver o ranking; ou **V** para voltar ao menu inicial.', None)

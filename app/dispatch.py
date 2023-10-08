@@ -10,7 +10,7 @@ USER_DIR.mkdir(parents=True, exist_ok=True)
 
 class BotOptions:
     QUIZZ = "1"
-    PGDINAMICA = "2"
+    PYTHON_PAGE = "2"
     TWILIO = "3"
     REGISTER_USER = "7"
     REBOOT_QUIZZ = "8"
@@ -39,8 +39,8 @@ class BotDispatcher:
         message = usermessage.lower()
         if message[0] in BotOptions.QUIZZ_FLOW:
             return BotDispatcher.QUIZZ_FLOW
-        elif message == BotOptions.PGDINAMICA:
-            return self.format(Replies.PGDINAMICA)
+        elif message == BotOptions.PYTHON_PAGE:
+            return self.format(Replies.PYTHON_PAGE)
         elif message == BotOptions.TWILIO:
             return self.format(Replies.TWILIO)
         else:
@@ -103,6 +103,5 @@ class QuizzManager:
         self.persistence.update_ranking(record)
 
         question = self.persistence.current_question(userdata)
-        # acabou o quizz
         return (Replies.quizz_ended(userdata) if question is None 
                 else Replies.next_question(points, question))

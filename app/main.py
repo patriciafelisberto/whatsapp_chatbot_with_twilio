@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 @app.route('/bot', methods=['POST'])
 def bot():
-    # print(request.values) - se quiser ver os parâmetros recebidos
     original_msg = request.values.get('Body', '')
 
     dispatcher = BotDispatcher()
@@ -23,9 +22,9 @@ def bot():
     msg.body(botresponse['body'])
     if botresponse.get('media', None):
         msg.media(botresponse['media'])
-    print(str(resp)) #- se quiser ver o formato do XML esperado pela Twilio
+    print(str(resp))
     return str(resp)
 
 @app.route('/')
 def index():
-    return "É isso aqui x 3!"
+    return "That's my Whatsapp chatbot application."
