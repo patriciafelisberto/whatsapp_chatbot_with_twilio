@@ -33,6 +33,12 @@ Instalar dependências.
 pip install -r requirements.txt
 ```
 
+Criar um arquivo `.env` e altere as variaveis de ambiente
+
+```shell
+cp .env.sample .env
+```
+
 ### 4. Inicialização da Aplicação Flask
 
 Após configurar o ambiente, inicie a aplicação em Flask executando o comando:
