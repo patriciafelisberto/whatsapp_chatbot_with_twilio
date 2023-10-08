@@ -2,8 +2,10 @@ import os
 import json
 from .question import Question
 
+from dotenv import load_dotenv
 
-QUESTIONS_FILE = 'questions.json'
+
+load_dotenv()
 
 class BasePersistence:
     def load_questions(self):
@@ -48,9 +50,9 @@ class LocalPersistence(BasePersistence):
         return os.path.join(self.tempdir, 'users', f'{filename}.json')
     
     def load_questions(self):
-        wsl_questions_path = '/home/pathy/ChatBot_Whatsapp/data/questions.json'
+        questions_path = os.environ.get('QUESTIONS_PATH', 'questions.json')
 
-        with open(wsl_questions_path, 'r', encoding='utf-8') as fp:
+        with open(questions_path, 'r', encoding='utf-8') as fp:
             q_dict = json.load(fp)
         
         questions = []
