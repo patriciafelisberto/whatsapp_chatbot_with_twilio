@@ -1,0 +1,6 @@
+venv/*
+draft/*
+__pycache__/*
+data/users/*
+temp/*
+*/__pycache__/*

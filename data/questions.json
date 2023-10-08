@@ -1,0 +1,33 @@
+{
+    "p1": {
+        "id": 1,
+        "text": "Qual é a função da instrução 'print' em Python?",
+        "category": "programming",
+        "alternatives": ["Ler dados do teclado", "Realizar operações matemáticas", "Exibir informações na tela", "Definir variáveis"],
+        "answer": 2
+    },
+
+    "p2": {
+        "id": 2,
+        "text": "Qual é o operador utilizado para concatenar strings em Python?",
+        "category": "programming",
+        "alternatives": ["+", "-", "*", "&"],
+        "answer": 0
+    },
+
+    "p3": {
+        "id": 3,
+        "text": "Em Python, qual é a função da palavra-chave 'elif'?",
+        "category": "programming",
+        "alternatives": ["Indica o início de um loop", "Define uma função", "É uma abreviação de 'else if'", "Declara uma variável"],
+        "answer": 2
+    },
+
+    "p4": {
+        "id": 4,
+        "text": "O que é uma lista em Python?",
+        "category": "programming",
+        "alternatives": ["Uma estrutura de controle de fluxo", "Um tipo de dado numérico", "Uma sequência ordenada de elementos", "Um operador de atribuição"],
+        "answer": 2
+    }
+}
