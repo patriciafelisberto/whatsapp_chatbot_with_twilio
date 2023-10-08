@@ -47,7 +47,7 @@ class BotDispatcher:
             return self.format(Replies.DEFAULT)
 
 class QuizzManager:
-    ALT_MAP = {'A': 2, 'B': 0, 'C': 2, 'D': 2}
+    ALT_MAP = {'A': 0, 'B': 1, 'C': 2, 'D': 2}
     
     def __init__(self) -> None:
         self.persistence = LocalPersistence(DATA_DIR, TEMP_DIR)
@@ -55,9 +55,23 @@ class QuizzManager:
 
     def reply(self, userid, usermessage):
         message = usermessage.lower()
+
+        if message == '1':
+            if self.persistence.is_registered_user(userid):
+                userdata = self.persistence.retrieve_user(userid)
+                
+                question = self.persistence.current_question(userdata)
+                if question is None:
+                    botresponse = Replies.quizz_ended(userdata)
+                else:
+                    botresponse = Replies.display_question(question)
+            else:
+                botresponse = Replies.unauth_response()
+            return botresponse
+
         if self.persistence.is_registered_user(userid):
             userdata = self.persistence.retrieve_user(userid)
-            
+
             if message == 'p':    
                 question = self.persistence.current_question(userdata)
                 if question is None:
@@ -78,8 +92,11 @@ class QuizzManager:
         else:
             if message[0] == BotOptions.REGISTER_USER:
                 parts = usermessage.split()
-                self.persistence.register_user(userid, parts[1])
-                botresponse = Replies.user_registered()
+                if len(parts) > 1:  
+                    self.persistence.register_user(userid, parts[1])
+                    botresponse = Replies.user_registered()
+                else:
+                    botresponse = {'body': 'Por favor, forneça um nome de usuário após o número. Ex: 7 Patricia'}
             else:
                 botresponse = Replies.unauth_response()
 
